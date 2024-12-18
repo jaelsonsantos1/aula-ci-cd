@@ -12,6 +12,10 @@ jobs:
     build:
         name: 'Build and Push'
         runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [18, 20, 22]
         
         steps:
             - name: Checkout source code
@@ -20,7 +24,7 @@ jobs:
             - name: Setup NodeJs
               uses: actions/setup-node@v4
               with:
-                node-version: '22'
+                node-version: ${{ matrix.node-version }}
                 cache: 'yarn'
             
             - name: Install dependencies
@@ -28,5 +32,5 @@ jobs:
             
             - name: Running Tests
               run: yarn test
-                    
+
           
