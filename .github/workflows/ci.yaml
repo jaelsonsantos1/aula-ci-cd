@@ -51,3 +51,4 @@ jobs:
 
             - name: Push Docker Image to DockerHub
               run: docker push jsx1/aula_docker_devops_ifal:${{ steps.generate_tag.outputs.sha }}
+
